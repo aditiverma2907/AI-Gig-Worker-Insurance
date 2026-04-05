@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== DESIGN TOKENS (CSS CUSTOM PROPERTIES) ===== */
+:root {
+  /* Industrial Palette */
+  --bg-chassis: #e0e5ec;
+  --bg-panel: #f0f2f5;
+  --bg-muted: #d1d9e6;
+  
+  /* Text */
+  --text-primary: #2d3436;
+  --text-muted: #4a5568;
+  --text-light: #ffffff;
+  
+  /* Accent (Safety Orange) */
+  --accent: #ff4757;
+  --accent-fg: #ffffff;
+  
+  /* Borders & Shadows */
+  --border-shadow: #babecc;
+  --border-light: #ffffff;
+  --border-dark: #a3b1c6;
+  
+  /* Neumorphic Shadows */
+  --shadow-card: 8px 8px 16px #babecc, -8px -8px 16px #ffffff;
+  --shadow-floating: 12px 12px 24px #babecc, -12px -12px 24px #ffffff, inset 1px 1px 0 rgba(255,255,255,0.5);
+  --shadow-pressed: inset 6px 6px 12px #babecc, inset -6px -6px 12px #ffffff;
+  --shadow-recessed: inset 4px 4px 8px #babecc, inset -4px -4px 8px #ffffff;
+  --shadow-sharp: 4px 4px 8px rgba(0,0,0,0.15), -1px -1px 1px rgba(255,255,255,0.8);
+  
+  /* LED Glows */
+  --glow-red: 0 0 10px 2px rgba(255, 71, 87, 0.6);
+  --glow-green: 0 0 10px 2px rgba(34, 197, 94, 1);
+  
+  /* Button Accent Shadow */
+  --shadow-button-accent: 4px 4px 8px rgba(166, 50, 60, 0.4), -4px -4px 8px rgba(255, 100, 110, 0.4);
+  
+  /* Transitions */
+  --easing-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* ===== GLOBAL STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--bg-chassis);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Microplastic texture overlay (industrial feel) */
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E"),
+    linear-gradient(to bottom, var(--bg-chassis), var(--bg-chassis));
+  background-attachment: fixed;
+}
+
+code {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ===== TAG RESETS ===== */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 150ms var(--easing-bounce);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+}
+
+input, textarea, select {
+  font-family: inherit;
+}
+
+/* ===== TYPOGRAPHY DEFAULTS ===== */
+h1 {
+  @apply text-hero-5xl font-extrabold tracking-tight;
+}
+
+h2 {
+  @apply text-heading-4xl font-bold tracking-tight;
+}
+
+h3 {
+  @apply text-heading-3xl font-bold tracking-tight;
+}
+
+h4 {
+  @apply text-xl font-semibold;
+}
+
+p {
+  @apply text-body-base leading-relaxed;
+}
+
+/* ===== FOCUS STATES ===== */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-chassis);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-muted);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-shadow);
+}
+
+/* ===== UTILITY CLASSES ===== */
+.shadow-neumorphic-card {
+  box-shadow: var(--shadow-card);
+}
+
+.shadow-neumorphic-floating {
+  box-shadow: var(--shadow-floating);
+}
+
+.shadow-neumorphic-pressed {
+  box-shadow: var(--shadow-pressed);
+}
+
+.shadow-neumorphic-recessed {
+  box-shadow: var(--shadow-recessed);
+}
+
+.shadow-neumorphic-sharp {
+  box-shadow: var(--shadow-sharp);
+}
+
+.glow-led-red {
+  box-shadow: var(--glow-red);
+}
+
+.glow-led-green {
+  box-shadow: var(--glow-green);
+}
+
+/* Text emboss effect (light text on dark backgrounds) */
+.text-emboss-light {
+  text-shadow: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.5));
+}
+
+/* Text shadow for dark text (subtle embossed) */
+.text-emboss-dark {
+  text-shadow: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.7));
+}
+
+/* Root container fullscreen min-height */
+#root {
+  min-height: 100vh;
+}
+
+/* Mechanical easing class */
+.transition-mechanical {
+  transition: all 300ms var(--easing-bounce);
+}
+
+.transition-fast {
+  transition: all 150ms var(--easing-bounce);
+}

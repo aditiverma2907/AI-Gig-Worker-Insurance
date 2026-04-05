@@ -1,0 +1,16 @@
+.admin-app {
+  min-height: 100vh;
+  background: #f0f2f5;
+}
+
+.admin-nav {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-nav h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
